@@ -8,11 +8,11 @@ Apple promoted a new iPad version at a widely-attended culture and arts festival
 
 ### Business Understanding
 
-Apple launched the iPad 2 on March 11, 2011, the same day that the 2011 SXSW Festival began in Austin, Texas. Apple also launched a pop-up store in Austin specifically to sell these and other products to the swell of crowds who attended the festival that year.
+Apple launched the iPad 2 on March 11, 2011, the same day that the 2011 SXSW Festival began in Austin, Texas. Apple also launched a pop-up store in Austin specifically to sell these and other products to the swell of crowds who attended the culture and arts festival that year.
 
 Following the festival, Apple wished to gain insight into how its presence at the festival had been received. Tweets with the hashtag #sxsw were collected and labeled according to 1) what sentiment if any they expressed and 2) which if any tech brands or products (limited to Apple and Google) were mentioned. Apple wanted to know what it could learn not only from its own festival presence but also from Google's presence at the same festival.
 
-This kind of information can help Apple understand both how to improve on the success of this launch in the future and how to avoid mistakes they or Google may have committed at the festival. Apple can also benefit from a machine learning model that helps them distinguish positive tweets from non-positive tweets on a massive scale so that this analysis can continue.
+Analyzing these tweets can help Apple understand both how to improve on the success of this launch in the future and how to avoid mistakes they or Google may have committed at the festival. Apple can also benefit from a machine learning model that helps them distinguish positive tweets from non-positive tweets on a massive scale so that this analysis can continue.
 
 ### Data Understanding
 The data set included 9,092 tweets, all with the #sxsw hashtag. Each record had three features:
@@ -40,18 +40,20 @@ Google's positive-negative count was 29.2%-5.3%.
 
 ## Modeling
 
-There were so few tweets with negative sentiments that it caused a class imbalance issue. We decided to make a binary classifier between positive and non-positive tweets (by grouping negative and neutral tweets together as "non-positive"). Consolidating sentiments into a binary classification reduced the class imbalance problem. 67.4% of the records were labeled non-positive and 32.6% positive.
+There were so few tweets with negative sentiments that it caused a class imbalance issue. We decided to make a binary classifier between positive and non-positive tweets (by grouping negative and neutral tweets together as "non-positive"). Consolidating sentiments into a binary classification reduced the class imbalance problem. 67.4% of the records were labeled non-positive and 32.6% were positive.
 
 The goal in this case was simply to predict these labels as accurately as possible overall. If we had chosen to classify all three sentiments, then it might have made more sense to choose precision or recall of positive or negative tweets, but the only metric we used was accuracy.
 
 The only other consideration was overfitting; we discounted models whose training accuracy was significantly higher than their test accuracy, even if the test accuracy was better than that of other models.
 
+All models involved removing a common list of stop words (as well as a list of stop words that we supplemented) and tokenizing, lemmatizing, and vectorizing the tweet text feature.
+
 ### Naive Bayes (BASELINE)
-The basic Naive Bayes model gave training/test accuracies of 79.4%/71.5%. This and all other models involved removing a common list of stop words (as well as a list of stop words that we supplemented) and tokenizing, lemmatizing, and vectorizing the tweet text feature.
+The basic Naive Bayes model gave training/test accuracies of 79.4%/71.5%. This was our baseline model.
 
-When we tuned the Naive Bayes model, we improved both scores (89.0%/72.2%). However, since it also widened the gap between training and test accuracy, we recognize this as an instance of overfitting the training data.
+When we tuned the Naive Bayes model, we improved both scores (89.0%/72.2%). However, since it also widened the gap between training and test accuracy, we recognized this as an instance of overfitting the training data.
 
-When we experimented with oversampling, it improved the training accuracy but worsened the test accuracy (86.7%/68.0%). Following this result, we abandoned all attempts at oversampling.
+When we experimented with oversampling, in an attempt to address the moderate class imbalance, it improved the training accuracy but worsened the test accuracy (86.7%/68.0%). Following this result, we abandoned all attempts at oversampling.
 
 ### Random Forest
 The Random Forest models gave more examples of overfitting. The first result was 96.5%/73.2%, and the tuned model was 86.4%/72.5%.
@@ -82,9 +84,15 @@ We experimented with some other models as well, but none of the results were as 
 
 ## Evaluation
 
-Most of the models betray evidence of overfitting the training data. The Bagged Trees, Adaboost, and Gradient Boost models were the only ones we considered likely not to be overfit. Of these three, Gradient Boost had the best test accuracy.
+Most of the models betray evidence of overfitting the training data. The Bagged Trees, Adaboost, and Gradient Boost models were the only models we considered likely not to be overfit. Of these three, Gradient Boost had the best test accuracy.
 
 ## Recommendations
+
+1. Evidence suggests the pop-up store was very popular. This was an effective way to get people excited about the product at a time when they could share their excitement with others around them. This event should be repeated if possible.
+
+2. Apple should consider addressing battery life and design issues with some of their products. These topics didn't fully dominate the discussion by any means, but they were the most significant of Apple's negative topics of any substance.
+
+3. The party Google hosted was clearly very popular and appeared to drive a lot of what buzz they enjoyed at the festival. Apple should consider hosting parties at festivals in a similar manner.
 
 ## Further Inquiry
 
@@ -94,7 +102,7 @@ More direct analysis could be done with the tweets that mentioned *both* Apple a
 
 With more time we would have liked to explore feature importances of the various models.
 
-We would also like to have explored *why* the models were overfitting the training data so consistently and what aspects could have been changed to prevent this.
+We would also like to have explored *why* the models were overfitting the training data so consistently and what aspects could have been changed to prevent this.a
 
 We would have liked to investigate other features, such as tweet length (counting both characters and words), to see if that added anything to the models.
 
