@@ -23,7 +23,7 @@ The original data had labels indicating which product (iPhone, iPad, Android, et
 
 Many records were ultimately labeled "both" or "neither".
 
-![tweet count by brand](images/brand_dist.png)
+![tweet count by brand](images/brand_dist.jpeg)
 
 #### Sentiment
 All tweets were labeled (by humans) as having a sentiment that was positive, negative, neutral, or "I can't tell". We merged the (very few) "I can't tell" labels with neutral labels so that there were effectively only three sentiments.
@@ -36,7 +36,7 @@ Apple's positive-negative count was 39.4%-7.7%.
 
 Google's positive-negative count was 29.2%-5.3%.
 
-![tweet count by brand](images/sentiment_dist.png)
+![tweet count by brand](images/sentiment_dist.jpeg)
 
 ## Modeling
 
