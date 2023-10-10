@@ -51,6 +51,18 @@ When we tuned the Naive Bayes model, we improved both scores (89.0%/72.2%
 
 ### Summary of Model Performance
 
+| Model | Recall | Accuracy |
+| -------- | ------- | ------- |
+| Logistic Regression | 77.2% | 75.0% |
+| Decision Trees (rough) | 76.3% | 72.0% |
+| Decision Trees (tuned) | 74.2% | 75.2% |
+| Bagged Trees | 77.7% | 76.6% |
+| **Random Forest** | **80.9%** | **76.3%** |
+| GridSearchCV | 75.0% | 77.2% |
+| Adaboost | 78.1% | 75.0% |
+| Gradient Boost | 78.6% | 75.7% |
+| XG Boost | 77.7% | 78.3% |
+
 ## Evaluation
 
 ## Recommendations
