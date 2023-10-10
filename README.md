@@ -96,6 +96,8 @@ With more time we would have liked to explore feature importances of the various
 
 We would also like to have explored *why* the models were overfitting the training data so consistently and what aspects could have been changed to prevent this.
 
+We would have liked to investigate other features, such as tweet length (counting both characters and words), to see if that added anything to the models.
+
 ## Links to PDFs
 
 Find the notebook [here](https://github.com/aarongalbraith/flatiron-phase4-project/tree/main/deliverables/notebook.pdf)
