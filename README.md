@@ -82,6 +82,12 @@ We experimented with some other models as well, but none of the results were as 
 | Gradient Boost | 74.9% | 72.3% |
 | XG Boost | 84.1% | 73.3% |
 
+### Confusion Matrix for Final Model
+
+![confusion matrix for gradient boost](images/confusion_matrix.jpeg)
+
+The normalized confusion matrix for the Gradient Boost model shows that its recall is much higher for non-positives than for positives, which is certainly a drawback of this model.
+
 ## Evaluation
 
 Most of the models betray evidence of overfitting the training data. The Bagged Trees, Adaboost, and Gradient Boost models were the only models we considered likely not to be overfit. Of these three, Gradient Boost had the best test accuracy.
@@ -105,6 +111,8 @@ With more time we would have liked to explore feature importances of the various
 We would also like to have explored *why* the models were overfitting the training data so consistently and what aspects could have been changed to prevent this.a
 
 We would have liked to investigate other features, such as tweet length (counting both characters and words), to see if that added anything to the models.
+
+It may also be worth rethinking our evaluation metric. It could be of more value to prioritize true positives (recall) than just focusing on accuracy.
 
 ## Links to PDFs
 
